@@ -1,0 +1,27 @@
+# ── Build settings ────────────────────────────────────────────
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+
+# ── Proxy: NocoDB ─────────────────────────────────────────────
+[[redirects]]
+  from   = "/proxy/nocodb/*"
+  to     = "https://nocodb.qurvii.com/:splat"
+  status = 200
+  force  = true
+
+  [redirects.headers]
+    X-Token = "QXOzKHJ982NgA2AIc8jDqK0lC5CdWEcCwacCIsaJ"
+
+# ── Proxy: Raw Material backend ───────────────────────────────
+[[redirects]]
+  from   = "/proxy/raw-material/*"
+  to     = "https://raw-material-backend.onrender.com/:splat"
+  status = 200
+  force  = true
+
+# ── SPA fallback ──────────────────────────────────────────────
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
